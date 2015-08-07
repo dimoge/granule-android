@@ -32,7 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.create_note_tv:
+            case R.id.create_check_tv:
                 //TODO:创建新的账单
                 break;
             default:return;
