@@ -8,15 +8,17 @@ import java.util.Date;
 public class Check {
     private int id;
     private Date date;//日期
+    private String title;
     private String remark;//备注
 
     public Check(){
     }
 
-    public Check(Date date, String remark, int id) {
+    public Check(Date date, String remark, int id, String title) {
         this.date = date;
         this.remark = remark;
         this.id = id;
+        this.title = title;
     }
 
     public Date getDate() {
@@ -41,5 +43,13 @@ public class Check {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

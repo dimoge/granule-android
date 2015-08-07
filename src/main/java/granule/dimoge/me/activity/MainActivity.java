@@ -60,7 +60,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Check check = new Check();
             check.setDate(new Date());
             check.setId(i);
-            check.setRemark("这个月很穷, 你看着办---" + i);
+            check.setRemark("这个月很穷, 你看着办--" + i);
+            check.setTitle("这里是标题--"+i);
             checkList.add(check);
         }
         CheckLlistAdapter checkLlistAdapter = new CheckLlistAdapter(context, checkList);
