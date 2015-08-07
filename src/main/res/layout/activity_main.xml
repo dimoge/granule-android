@@ -6,13 +6,13 @@
               android:background="#ffffff"
         >
 
-    <TextView android:id="@+id/create_note_tv"
+    <TextView android:id="@+id/create_check_tv"
               android:layout_width="match_parent" android:layout_height="50dp"
               android:text="创建新账单"
               android:gravity="center"
               android:textColor="#00ccff"
             />
-    <ListView android:id="@+id/note_title_lv" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ListView android:id="@+id/check_lv" android:layout_width="match_parent" android:layout_height="match_parent">
 
     </ListView>
 
