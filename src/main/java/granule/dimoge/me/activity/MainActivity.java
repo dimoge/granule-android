@@ -17,8 +17,8 @@ import granule.dimoge.me.R;
  */
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    TextView create_check_tv;//´´½¨ĞÂÕËµ¥
-    ListView check_lv;//ÕËµ¥ÁĞ±í
+    TextView create_check_tv;//åˆ›å»ºè´¦å•
+    ListView check_lv;//è´¦å•åˆ—è¡¨
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.create_check_tv:
-                //TODO:´´½¨ĞÂµÄÕËµ¥
+                //TODO:åˆ›å»ºä¸€ä¸ªæ–°çš„è´¦å•
                 break;
             default:return;
         }
@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         create_check_tv = (TextView) findViewById(R.id.create_check_tv);
         check_lv = (ListView) findViewById(R.id.check_lv);
 
-        create_check_tv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //ÏÂ»®Ïß
+        create_check_tv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //textViewæ·»åŠ ä¸‹åˆ’çº¿
     }
 
     private void initClick() {
@@ -52,7 +52,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //¼àÌı·µ»Ø¼ü, ·µ»Øµ½×ÀÃæ
+        //è¿”å›é”®ç›‘å¬, ç›´æ¥å›åˆ°æ¡Œé¢
         Intent home = new Intent(Intent.ACTION_MAIN);
         home.addCategory(Intent.CATEGORY_HOME);
         startActivity(home);
