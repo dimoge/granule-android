@@ -12,5 +12,8 @@
               android:gravity="center"
               android:textColor="#00ccff"
             />
+    <ListView android:id="@+id/note_title_lv" android:layout_width="match_parent" android:layout_height="match_parent">
+
+    </ListView>
 
 </LinearLayout>
