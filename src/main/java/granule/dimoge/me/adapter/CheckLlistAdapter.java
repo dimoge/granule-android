@@ -47,13 +47,13 @@ public class CheckLlistAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.adapter_check, null);//加载布局文件
             //控件初始化
             check_item_img = (ImageView) convertView.findViewById(R.id.check_item_img);
             check_item_tv = (TextView) convertView.findViewById(R.id.check_item_tv);
-
+        }
         check_item_tv.setText(checkList.get(position).getRemark());
-        return null;
+        return convertView;
     }
 }
