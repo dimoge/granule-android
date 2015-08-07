@@ -14,8 +14,7 @@ public class AppStart extends Activity {
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            context.startActivity(new Intent(AppStart.this, MainActivity.class));
-            super.handleMessage(msg);
+            startActivity(new Intent(AppStart.this, MainActivity.class));
         }
     };
 

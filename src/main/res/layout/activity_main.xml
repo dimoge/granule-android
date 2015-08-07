@@ -2,8 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="#ffffff"
+        >
 
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="主要功能区"/>
+    <TextView android:id="@+id/create_note_tv"
+              android:layout_width="match_parent" android:layout_height="50dp"
+              android:text="创建新账单"
+              android:gravity="center"
+              android:textColor="#00ccff"
+            />
 
 </LinearLayout>
