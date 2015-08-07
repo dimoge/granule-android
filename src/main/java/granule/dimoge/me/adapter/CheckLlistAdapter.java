@@ -2,9 +2,16 @@ package granule.dimoge.me.adapter;
 
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import granule.dimoge.me.R;
+import granule.dimoge.me.entity.Check;
+
+import java.util.List;
 
 /**
  * Created by dime on 2015/8/7 0007.
@@ -12,29 +19,41 @@ import android.widget.BaseAdapter;
 public class CheckLlistAdapter extends BaseAdapter {
 
     Context context;
+    List<Check> checkList;//数据
 
-    public CheckLlistAdapter(){
+    ImageView check_item_img;
+    TextView check_item_tv;
+
+    public CheckLlistAdapter(Context context, List<Check> checkList){
         this.context = context;
+        this.checkList = checkList;
     }
 
 
     @Override
     public int getCount() {
-        return 0;
+        return checkList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return checkList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return checkList.get(position).getId();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_check, null);//加载布局文件
+            //控件初始化
+            check_item_img = (ImageView) convertView.findViewById(R.id.check_item_img);
+            check_item_tv = (TextView) convertView.findViewById(R.id.check_item_tv);
+
+        check_item_tv.setText(checkList.get(position).getRemark());
         return null;
     }
 }

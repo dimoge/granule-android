@@ -6,12 +6,17 @@ import java.util.Date;
  * Created by dime on 2015/8/7 0007.
  */
 public class Check {
-    private Date date;//ÈÕÆÚ
-    private String remark;//±¸×¢
+    private int id;
+    private Date date;//æ—¥æœŸ
+    private String remark;//å¤‡æ³¨
 
-    public Check(Date date, String remark) {
+    public Check(){
+    }
+
+    public Check(Date date, String remark, int id) {
         this.date = date;
         this.remark = remark;
+        this.id = id;
     }
 
     public Date getDate() {
@@ -20,5 +25,21 @@ public class Check {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
