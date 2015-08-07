@@ -1,4 +1,4 @@
-package me.danwi.sbuu.myapplication2.app;
+package granule.dimoge.me;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

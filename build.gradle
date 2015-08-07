@@ -14,11 +14,10 @@ repositories {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "23.0.0 rc2"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "me.danwi.sbuu.myapplication2.app"
-        minSdkVersion 9
+        applicationId "granule.dimoge.me"
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
