@@ -15,7 +15,7 @@ public class AppStart extends Activity {
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            startActivity(new Intent(AppStart.this, MainActivity.class));
+            startActivity(new Intent(AppStart.this, AccountActivity.class));
         }
     };
 
