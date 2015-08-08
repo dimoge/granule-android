@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import granule.dimoge.me.R;
+import granule.dimoge.me.dialog.AccountCreateDialog;
 
 /**
  * Created by dime on 2015/8/8 0008.
