@@ -7,18 +7,20 @@ import java.util.Date;
  */
 public class Check {
     private int id;
+    private String accountId;//所属账户id
     private Date date;//日期
-    private String title;
+    private String title;//标题
     private String remark;//备注
 
     public Check(){
     }
 
-    public Check(Date date, String remark, int id, String title) {
-        this.date = date;
-        this.remark = remark;
+    public Check(int id, String accountId, Date date, String title, String remark) {
         this.id = id;
+        this.accountId = accountId;
+        this.date = date;
         this.title = title;
+        this.remark = remark;
     }
 
     public Date getDate() {
@@ -51,5 +53,13 @@ public class Check {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 }
