@@ -11,6 +11,7 @@ public class Account {
     private String user;//拥有者
     private String name;//账户名称
     private String img;//图标
+    private float total;//总额
     private float expend;//总支出
     private float income;//总收入
     private Date date;//创建时间
@@ -18,10 +19,12 @@ public class Account {
     public Account() {
     }
 
-    public Account(String id, String name, String img, float expend, float income, Date date) {
+    public Account(String id, String user, String name, String img, float total, float expend, float income, Date date) {
         this.id = id;
+        this.user = user;
         this.name = name;
         this.img = img;
+        this.total = total;
         this.expend = expend;
         this.income = income;
         this.date = date;
@@ -73,5 +76,21 @@ public class Account {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
 }

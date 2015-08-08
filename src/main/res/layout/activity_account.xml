@@ -4,6 +4,16 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="用户账户总览"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:text="用户账户总览" android:textSize="30dp" android:gravity="center"/>
+    <!-- 按钮:添加账户-->
+    <Button android:id="@+id/account_add_btn"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="添加新账户"/>
+
+    <!-- 账户列表-->
+    <ListView android:layout_width="match_parent" android:layout_height="match_parent">
+
+    </ListView>
 
 </LinearLayout>
