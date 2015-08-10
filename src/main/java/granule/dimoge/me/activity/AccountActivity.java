@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import granule.dimoge.me.R;
 import granule.dimoge.me.dialog.AccountCreateDialog;
-import granule.dimoge.me.entity.Account;
 
 /**
  * Created by dime on 2015/8/8 0008.
