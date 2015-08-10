@@ -1,16 +1,19 @@
 package granule.dimoge.me.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import granule.dimoge.me.R;
 import granule.dimoge.me.dialog.AccountCreateDialog;
+import granule.dimoge.me.entity.Account;
 
 /**
  * Created by dime on 2015/8/8 0008.
  */
 public class AccountActivity extends Activity implements View.OnClickListener {
+    Context context;
 
     Button account_add_btn;//添加账户的按钮
 
@@ -18,6 +21,7 @@ public class AccountActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+        context = this;
         
         initView();
         initClick();
@@ -28,6 +32,9 @@ public class AccountActivity extends Activity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.account_add_btn:
                 //TODO:添加新账户
+                AccountCreateDialog accountCreateDialog = new AccountCreateDialog(context, R.style.account_create_style);
+                accountCreateDialog.setContentView(R.layout.dialog_account_create);
+                accountCreateDialog.show();
                 break;
             default:return;
         }

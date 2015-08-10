@@ -1,4 +1,12 @@
 <resources>
 
+    <style name="account_create_style" parent="@android:style/Theme.Dialog">
+
+        <item name="android:background">#ffffff</item>
+        <!--是否有标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+    </style>
 
 </resources>
