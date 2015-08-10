@@ -32,9 +32,7 @@ public class AccountActivity extends Activity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.account_add_btn:
                 //TODO:添加新账户
-                AccountCreateDialog accountCreateDialog = new AccountCreateDialog(context, R.style.account_create_style);
-                accountCreateDialog.setContentView(R.layout.dialog_account_create);
-                accountCreateDialog.show();
+                new AccountCreateDialog(context, R.style.account_create_style).showDialog();
                 break;
             default:return;
         }
