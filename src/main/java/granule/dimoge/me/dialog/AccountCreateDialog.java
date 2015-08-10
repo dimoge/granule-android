@@ -3,6 +3,7 @@ package granule.dimoge.me.dialog;
 import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,7 +16,7 @@ import granule.dimoge.me.utils.CommonUtil;
 /**
  * Created by dime on 2015/8/8 0008.
  */
-public class AccountCreateDialog extends Dialog {
+public class AccountCreateDialog extends Dialog implements View.OnClickListener {
 
     Window window;
     Context context;
@@ -45,9 +46,15 @@ public class AccountCreateDialog extends Dialog {
         setCanceledOnTouchOutside(false);//不允许触摸消失
 
         initView();//初始化控件
+        initClick();//初始化控件点击事件
 
 
         show();//显示出来
+    }
+
+    private void initClick() {
+        account_create_yes_btn.setOnClickListener(this);
+        account_create_no_btn.setOnClickListener(this);
     }
 
     private void initView() {
@@ -56,5 +63,18 @@ public class AccountCreateDialog extends Dialog {
         account_total_edtTxt = (EditText) findViewById(R.id.account_total_edtTxt);
         account_create_no_btn = (Button) findViewById(R.id.account_create_no_btn);
         account_create_yes_btn = (Button) findViewById(R.id.account_create_yes_btn);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.account_create_yes_btn:
+                //TODO:确定
+                break;
+            case R.id.account_create_no_btn:
+                //取消
+                break;
+            default:return;
+        }
     }
 }
