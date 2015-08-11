@@ -7,7 +7,7 @@ import java.util.Date;
  * 账户实体
  */
 public class Account {
-    private String id;
+    private int id;
     private String user;//拥有者
     private String name;//账户名称
     private String img;//图标
@@ -19,7 +19,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(String id, String user, String name, String img, float total, float expend, float income, Date date) {
+    public Account(int id, String user, String name, String img, float total, float expend, float income, Date date) {
         this.id = id;
         this.user = user;
         this.name = name;
@@ -30,11 +30,11 @@ public class Account {
         this.date = date;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
