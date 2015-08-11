@@ -4,9 +4,9 @@ package granule.dimoge.me.entity;
  * Created by dime on 2015/8/8 0008.
  */
 public class User {
-    private String id;
-    private String name;
-    private int sex;//1, 0
+    private String id;//通过手机生成的deviceid
+    private String name;//默认为 default_user
+    private int sex;//1, 0 默认为1
     private int age;
     private String tel;
     private String email;
