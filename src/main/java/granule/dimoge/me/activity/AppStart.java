@@ -37,7 +37,7 @@ public class AppStart extends Activity {
         Cursor cursor = db.rawQuery("select * from user", null);
         if( cursor.moveToFirst() ){
             //旧用户
-            Toast.makeText(context, "欢迎回来:"+cursor.getColumnIndex("name"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "欢迎回来:"+cursor.getString(cursor.getColumnIndex("name")), Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "新用户, 添加数据库", Toast.LENGTH_SHORT).show();//TODO:DELETE
             //新用户, 要注册哦
