@@ -1,12 +1,11 @@
 package granule.dimoge.me.activity;
 
-import android.app.ActionBar;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import granule.dimoge.me.AppConfig;
@@ -51,6 +50,7 @@ public class AccountActivity extends Activity implements View.OnClickListener {
     /**
      * 控件初始化
      */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void initView() {
         account_lv = (ListView) findViewById(R.id.account_lv);
         /////TODO:模拟假数据显示listview
@@ -67,9 +67,10 @@ public class AccountActivity extends Activity implements View.OnClickListener {
             accountList.add(account);
         }//数据准备完毕
         account_add_img = new ImageView(context);
-        account_add_img.setImageResource(R.mipmap.account_add);
-        AbsListView.LayoutParams params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ListView.LayoutParams params = new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT, ListView.LayoutParams.MATCH_PARENT);
         account_add_img.setLayoutParams(params);
+        account_add_img.setImageResource(R.mipmap.account_add);
+
         account_add_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
