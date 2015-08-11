@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Account {
     private int id;
-    private String user;//拥有者
+    private String userId;//拥有者
     private String name;//账户名称
     private String img;//图标
     private float total;//总额
@@ -19,9 +19,9 @@ public class Account {
     public Account() {
     }
 
-    public Account(int id, String user, String name, String img, float total, float expend, float income, Date date) {
+    public Account(int id, String userId, String name, String img, float total, float expend, float income, Date date) {
         this.id = id;
-        this.user = user;
+        this.userId = userId;
         this.name = name;
         this.img = img;
         this.total = total;
@@ -38,6 +38,14 @@ public class Account {
         this.id = id;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getName() {
         return name;
     }
@@ -52,6 +60,14 @@ public class Account {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
 
     public float getExpend() {
@@ -76,21 +92,5 @@ public class Account {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public float getTotal() {
-        return total;
-    }
-
-    public void setTotal(float total) {
-        this.total = total;
     }
 }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
+import granule.dimoge.me.AppConfig;
 import granule.dimoge.me.R;
 import granule.dimoge.me.utils.CommonUtil;
 import granule.dimoge.me.utils.MySQLiteHelper;
@@ -38,6 +39,9 @@ public class AppStart extends Activity {
         if( cursor.moveToFirst() ){
             //旧用户
             Toast.makeText(context, "欢迎回来:"+cursor.getString(cursor.getColumnIndex("name")), Toast.LENGTH_SHORT).show();
+            //将用户信息记录到对象中, 方便以后使用
+            AppConfig.user.setId(cursor.getString(cursor.getColumnIndex("id")));//id = devicedId
+            AppConfig.user.setName(cursor.getString(cursor.getColumnIndex("name")));//用户名
         }else{
             Toast.makeText(context, "新用户, 添加数据库", Toast.LENGTH_SHORT).show();//TODO:DELETE
             //新用户, 要注册哦

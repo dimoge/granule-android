@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import granule.dimoge.me.R;
 import granule.dimoge.me.dialog.AccountCreateDialog;
 
@@ -14,7 +14,7 @@ import granule.dimoge.me.dialog.AccountCreateDialog;
 public class AccountActivity extends Activity implements View.OnClickListener {
     Context context;
 
-    Button account_add_btn;//添加账户的按钮
+    ImageButton account_add_btn;//添加账户的按钮
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class AccountActivity extends Activity implements View.OnClickListener {
      * 控件初始化
      */
     private void initView() {
-        account_add_btn = (Button) findViewById(R.id.account_add_btn);
+        account_add_btn = (ImageButton) findViewById(R.id.account_add_btn);
     }
 
     /**

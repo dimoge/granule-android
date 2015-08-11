@@ -2,18 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-              android:text="用户账户总览" android:textSize="30dp" android:gravity="center"/>
-    <!-- 按钮:添加账户-->
-    <Button android:id="@+id/account_add_btn"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="添加新账户"/>
-
+              android:layout_height="match_parent"
+              android:background="@mipmap/account_bg">
+    <!-- 头部部分-->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <ImageButton android:layout_width="match_parent" android:layout_height="match_parent" android:background="@mipmap/account_left" android:layout_weight="3"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:layout_weight="1">
+            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="2015年8月" android:gravity="center" android:layout_weight="1"/>
+            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="总收入:8000" android:gravity="center" android:layout_weight="1"/>
+            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="总支出:2615" android:gravity="center" android:layout_weight="1"/>
+        </LinearLayout>
+        <ImageButton android:layout_width="match_parent" android:layout_height="match_parent" android:background="@mipmap/account_right" android:layout_weight="3"/>
+    </LinearLayout>
     <!-- 账户列表-->
-    <ListView android:layout_width="match_parent" android:layout_height="match_parent">
+    <ListView android:layout_width="match_parent" android:layout_height="fill_parent"></ListView>
+    <!-- 按钮:添加账户, 这个按钮必将成为listview的一部分-->
+    <ImageButton android:id="@+id/account_add_btn"
+                 android:layout_width="match_parent" android:layout_height="50dp"
+                 android:background="@mipmap/account_add"
+            />
 
-    </ListView>
+
 
 </LinearLayout>
