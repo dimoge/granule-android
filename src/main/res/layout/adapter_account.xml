@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <!-- 账户图标-->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="3">
+            <ImageView android:id="@+id/account_icon_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@mipmap/ic_launcher"/>
+        </LinearLayout>
+        <!--中部显示文字信息-->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:layout_weight="1.5">
+            <TextView android:id="@+id/account_name_tv" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="我的钱包哦哦哦*******452"/>
+            <TextView android:id="@+id/account_total_tv" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="总金额"/>
+        </LinearLayout>
+        <!-- 编辑按钮-->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="3">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@mipmap/ic_launcher"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
