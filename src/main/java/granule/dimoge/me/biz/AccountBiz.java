@@ -17,8 +17,6 @@ import java.util.List;
 public class AccountBiz {
 
     Context context;
-    MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
-    SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
 
     public AccountBiz(Context context) {
         this.context = context;
@@ -31,6 +29,8 @@ public class AccountBiz {
      * @return
      */
     public long add(ContentValues contentValues){
+        MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
+        SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
        long result = db.insert("account", null,  contentValues);
        return result;
     }
@@ -40,6 +40,8 @@ public class AccountBiz {
      * @return
      */
     public List<Account> getAll(){
+        MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
+        SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
         List<Account> accountList = new ArrayList<Account>();
         Cursor cursor = db.rawQuery("SELECT * FROM account", null);
         while (cursor.moveToNext()){
