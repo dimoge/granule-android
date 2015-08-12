@@ -21,7 +21,7 @@ public class AccountListAdapter extends BaseAdapter {
 
 
     Context context;
-    List<Account> accountList;
+    public List<Account> accountList;
 
     ImageView account_icon_img;//账户图标
     TextView account_name_tv, account_total_tv;//账户名称, 账户总额

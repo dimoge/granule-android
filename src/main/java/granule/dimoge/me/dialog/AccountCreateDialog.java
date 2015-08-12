@@ -12,10 +12,13 @@ import android.view.WindowManager;
 import android.widget.*;
 import granule.dimoge.me.AppConfig;
 import granule.dimoge.me.R;
+import granule.dimoge.me.activity.AccountActivity;
+import granule.dimoge.me.adapter.AccountListAdapter;
 import granule.dimoge.me.biz.AccountBiz;
 import granule.dimoge.me.entity.Account;
 import granule.dimoge.me.utils.CommonUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -26,6 +29,7 @@ public class AccountCreateDialog extends Dialog implements View.OnClickListener 
     Window window;
     Context context;
     Account account;
+    AccountActivity accountActivity = new AccountActivity();
 
     EditText account_name_edtTxt;//账户名称
     RadioGroup account_icon_rdoGroup;//账户图标选择
@@ -91,18 +95,23 @@ public class AccountCreateDialog extends Dialog implements View.OnClickListener 
                 }
                 String img = (account_cash.getId() == account_icon_rdoGroup.getCheckedRadioButtonId() ? R.mipmap.cash : R.mipmap.incash) + "";//账户图片
                 ContentValues contentValues = new ContentValues();
-//                contentValues.put("id", 0);
-                contentValues.put("userId", AppConfig.user.getId());
+                contentValues.put("userId", AppConfig.user.getId());//如果主键是自增的, 就不用填写主键
                 contentValues.put("name", name);
                 contentValues.put("img", img);
                 contentValues.put("total", total);
                 contentValues.put("expend", expend);
                 contentValues.put("income", income);
-                contentValues.put("date", String.valueOf(new Date()));
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-DD-mm HH:mm:ss");
+                Date date = new Date();
+                contentValues.put("date", sdf.format(date));
                 //执行添加
                 AccountBiz accountBiz = new AccountBiz(context);
                 if(accountBiz.add(contentValues)!=-1){
                     Toast.makeText(context, "账户添加成功:"+name, Toast.LENGTH_SHORT).show();
+                    //构建一个account对象, 用来刷新适配器数据
+                    Account account = new Account(0, AppConfig.user.getId(), name, img, total, 0, 0, date);
+                    accountActivity.accountListAdapter.accountList.add(account);
+                    accountActivity.accountListAdapter.notifyDataSetChanged();
                     this.dismiss();
                 }else {
                     Toast.makeText(context, "账户添加失败,请重试!!!!", Toast.LENGTH_SHORT).show();

@@ -8,14 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-import granule.dimoge.me.AppConfig;
 import granule.dimoge.me.R;
 import granule.dimoge.me.adapter.AccountListAdapter;
 import granule.dimoge.me.biz.AccountBiz;
 import granule.dimoge.me.dialog.AccountCreateDialog;
 import granule.dimoge.me.entity.Account;
-import java.util.ArrayList;
-import java.util.Date;
+
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -23,6 +22,7 @@ import java.util.List;
  */
 public class AccountActivity extends Activity implements View.OnClickListener {
     Context context;
+    public static AccountListAdapter accountListAdapter;
 
     ImageView account_add_img;//添加账户的按钮
     ListView account_lv;//账户列表
@@ -32,8 +32,12 @@ public class AccountActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
         context = this;
-        
-        initView();
+
+        try {
+            initView();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         initClick();
     }
 
@@ -52,7 +56,7 @@ public class AccountActivity extends Activity implements View.OnClickListener {
      * 控件初始化
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void initView() {
+    private void initView() throws ParseException {
         account_lv = (ListView) findViewById(R.id.account_lv);
         //获取数据
         AccountBiz accountBiz = new AccountBiz(context);
@@ -71,7 +75,7 @@ public class AccountActivity extends Activity implements View.OnClickListener {
         });
         account_lv.addFooterView(account_add_img);
         //初始化适配器
-        AccountListAdapter accountListAdapter = new AccountListAdapter(context, accountList);
+        accountListAdapter = new AccountListAdapter(context, accountList);
         account_lv.setAdapter(accountListAdapter);
 
     }
