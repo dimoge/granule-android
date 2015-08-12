@@ -23,7 +23,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         //初始化数据库
         db.execSQL("CREATE TABLE user(id TEXT, name TEXT, sex INTEGER, age integer, tel TEXT, email TEXT)");//创建用户表
         db.execSQL("CREATE TABLE account(id INTEGER primary key autoincrement, userId TEXT, name TEXT, img TEXT, total FLOAT, expend FLOAT, income FLOAT, date DATE)");//创建账户表
-        db.execSQL("CREATE TABLE checkasdf(id INTEGER primary key autoincrement, accountId INTEGER, date DATE, title TEXT, remark TEXT, amount FLOAT)");//创建 账单表
+        db.execSQL("CREATE TABLE checkasdf(id INTEGER primary key autoincrement, userId INTEGER, date DATE, title TEXT, remark TEXT, amount FLOAT)");//创建 账单表
     }
 
     @Override

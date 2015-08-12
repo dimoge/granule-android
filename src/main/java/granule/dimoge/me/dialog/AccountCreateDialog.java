@@ -2,7 +2,9 @@ package granule.dimoge.me.dialog;
 
 import android.app.ActionBar;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -10,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.*;
 import granule.dimoge.me.AppConfig;
 import granule.dimoge.me.R;
+import granule.dimoge.me.biz.AccountBiz;
 import granule.dimoge.me.entity.Account;
 import granule.dimoge.me.utils.CommonUtil;
 
@@ -74,16 +77,36 @@ public class AccountCreateDialog extends Dialog implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.account_create_yes_btn:
-                //TODO:确定
-                account = new Account();
-                account.setId(0);
-                account.setUserId(AppConfig.user.getId());
-                account.setName(account_name_edtTxt.getText().toString().trim());
-                account.setExpend(0);//总支出 默认为0
-                account.setIncome(0);//总收入 默认为0
-                account.setTotal(Float.parseFloat(account_total_edtTxt.getText().toString().trim()));//总金额
-                account.setImg((account_cash.getId() == account_icon_rdoGroup.getCheckedRadioButtonId() ? R.mipmap.cash : R.mipmap.incash) + "");
-                account.setDate(new Date());
+                //TODO:确定添加
+                //获取参数
+                String name;
+                float total, expend = 0, income = 0;//总金额, 总支出(默认为0), 总收入(默认为0)
+                //用户输入不为空验证
+                if(!TextUtils.isEmpty(account_name_edtTxt.getText()) && !TextUtils.isEmpty(account_total_edtTxt.getText())){//不为空
+                    name = account_name_edtTxt.getText().toString().trim();//账户名称
+                    total =Float.parseFloat(account_total_edtTxt.getText().toString().toString());
+                }else{
+                    Toast.makeText(context, "请填写账户信息", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String img = (account_cash.getId() == account_icon_rdoGroup.getCheckedRadioButtonId() ? R.mipmap.cash : R.mipmap.incash) + "";//账户图片
+                ContentValues contentValues = new ContentValues();
+//                contentValues.put("id", 0);
+                contentValues.put("userId", "100210021002");
+                contentValues.put("name", name);
+                contentValues.put("img", img);
+                contentValues.put("total", total);
+                contentValues.put("expend", expend);
+                contentValues.put("income", income);
+                contentValues.put("date", String.valueOf(new Date()));
+                //执行添加
+                AccountBiz accountBiz = new AccountBiz(context);
+                if(accountBiz.add(contentValues)!=-1){
+                    Toast.makeText(context, "账户添加成功:"+name, Toast.LENGTH_SHORT).show();
+                    this.dismiss();
+                }else {
+                    Toast.makeText(context, "账户添加失败,请重试!!!!", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.account_create_no_btn:
                 //取消
