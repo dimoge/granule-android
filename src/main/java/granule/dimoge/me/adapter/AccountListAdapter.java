@@ -57,6 +57,9 @@ public class AccountListAdapter extends BaseAdapter {
             account_total_tv = (TextView) convertView.findViewById(R.id.account_total_tv);
             account_update_imgBtn = (ImageButton) convertView.findViewById(R.id.account_update_imgBtn);
         }
+        account_name_tv.setText(accountList.get(position).getName());
+        account_total_tv.setText("总金额:"+accountList.get(position).getTotal());
+
         return convertView;
     }
 }

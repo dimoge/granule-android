@@ -92,7 +92,7 @@ public class AccountCreateDialog extends Dialog implements View.OnClickListener 
                 String img = (account_cash.getId() == account_icon_rdoGroup.getCheckedRadioButtonId() ? R.mipmap.cash : R.mipmap.incash) + "";//账户图片
                 ContentValues contentValues = new ContentValues();
 //                contentValues.put("id", 0);
-                contentValues.put("userId", "100210021002");
+                contentValues.put("userId", AppConfig.user.getId());
                 contentValues.put("name", name);
                 contentValues.put("img", img);
                 contentValues.put("total", total);
