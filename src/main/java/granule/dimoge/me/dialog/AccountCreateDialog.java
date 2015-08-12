@@ -93,7 +93,7 @@ public class AccountCreateDialog extends Dialog implements View.OnClickListener 
                     Toast.makeText(context, "请填写账户信息", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String img = (account_cash.getId() == account_icon_rdoGroup.getCheckedRadioButtonId() ? R.mipmap.cash : R.mipmap.incash) + "";//账户图片
+                String img = R.id.account_cash == account_icon_rdoGroup.getCheckedRadioButtonId() ? "cash" : "incash";//账户图片
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("userId", AppConfig.user.getId());//如果主键是自增的, 就不用填写主键
                 contentValues.put("name", name);

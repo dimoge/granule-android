@@ -59,6 +59,7 @@ public class AccountListAdapter extends BaseAdapter {
         }
         account_name_tv.setText(accountList.get(position).getName());
         account_total_tv.setText("总金额:"+accountList.get(position).getTotal());
+        account_icon_img.setImageResource(accountList.get(position).getImg().equals("cash")?R.mipmap.cash:R.mipmap.incash);
 
         return convertView;
     }
