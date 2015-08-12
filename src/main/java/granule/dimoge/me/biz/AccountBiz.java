@@ -50,6 +50,7 @@ public class AccountBiz {
             Account account = new Account();
             account.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
             account.setUserId(cursor.getString(cursor.getColumnIndex("userId")));
+            account.setName(cursor.getString(cursor.getColumnIndex("name")));
             account.setImg(cursor.getString(cursor.getColumnIndex("img")));
             account.setTotal(Float.parseFloat(cursor.getString(cursor.getColumnIndex("total"))));
             account.setExpend(Float.parseFloat(cursor.getString(cursor.getColumnIndex("expend"))));
