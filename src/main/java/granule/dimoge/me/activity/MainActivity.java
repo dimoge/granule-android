@@ -72,14 +72,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         create_check_tv.setOnClickListener(this);
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //返回键监听, 直接回到桌面
-        Intent home = new Intent(Intent.ACTION_MAIN);
-        home.addCategory(Intent.CATEGORY_HOME);
-        startActivity(home);
-        return super.onKeyDown(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        //返回键监听, 直接回到桌面
+//        Intent home = new Intent(Intent.ACTION_MAIN);
+//        home.addCategory(Intent.CATEGORY_HOME);
+//        startActivity(home);
+//        return super.onKeyDown(keyCode, event);
+//    }
 
 
 }

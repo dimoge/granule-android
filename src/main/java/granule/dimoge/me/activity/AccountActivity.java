@@ -3,9 +3,11 @@ package granule.dimoge.me.activity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import granule.dimoge.me.R;
@@ -84,6 +86,14 @@ public class AccountActivity extends Activity implements View.OnClickListener {
      * 点击事件初始化
      */
     private void initClick() {
+        account_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.putExtra("position", position);
+                context.startActivity(intent);
+            }
+        });
     }
 
 
