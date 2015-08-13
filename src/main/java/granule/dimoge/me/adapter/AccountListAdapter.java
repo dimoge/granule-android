@@ -65,7 +65,7 @@ public class AccountListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 //打开修改账户信息的对话框
-                AccountUpdateDialog accountUpdateDialog = new AccountUpdateDialog(context, R.style.account_create_style, accountList.get(position));
+                AccountUpdateDialog accountUpdateDialog = new AccountUpdateDialog(context, R.style.account_create_style, accountList.get(position), position);
                 accountUpdateDialog.showDialog();
             }
         });

@@ -24,6 +24,12 @@ public class AccountBiz {
         this.context = context;
     }
 
+    public void update(ContentValues contentValues, String id){
+        MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
+        SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
+        db.update("account", contentValues, "id=?", new String[]{id});
+
+    }
 
     /**
      * 添加操作
