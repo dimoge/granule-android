@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@mipmap/account_bg">
+    <!-- 头部部分-->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="3" android:gravity="center">
+            <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@mipmap/account_left"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:layout_weight="1">
+            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="2015年8月" android:gravity="center" android:layout_weight="1" android:textColor="#FFFF"/>
+            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="总收入:8000" android:gravity="center" android:layout_weight="1" android:textStyle="bold" android:textColor="#FFFF"/>
+            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="总支出:2615" android:gravity="center" android:layout_weight="1" android:textStyle="bold" android:textColor="#FFFF"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="3" android:gravity="center">
+            <ImageButton android:id="@+id/account_update_imgBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@mipmap/account_right"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!-- 账户列表-->
+    <ListView android:id="@+id/account_lv" android:layout_width="match_parent" android:layout_height="fill_parent"></ListView>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageButton android:id="@+id/account_account_select_imgBtn" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:background="@mipmap/account_account"/>
+        <ImageButton android:id="@+id/account_report_select_imgBtn" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:background="@mipmap/account_report"/>
+        <ImageButton android:id="@+id/account_speak_select_imgBtn" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:background="@mipmap/account_report"/>
+    </LinearLayout>
+
+</LinearLayout>

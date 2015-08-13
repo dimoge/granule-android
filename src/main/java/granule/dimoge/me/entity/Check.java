@@ -7,18 +7,22 @@ import java.util.Date;
  */
 public class Check {
     private int id;
+    private int accountId;//所属账户id
     private Date date;//日期
-    private String title;
+    private String title;//标题
     private String remark;//备注
+    private float amount;//金额, 有正负之分
 
     public Check(){
     }
 
-    public Check(Date date, String remark, int id, String title) {
-        this.date = date;
-        this.remark = remark;
+    public Check(int id, int accountId, Date date, String title, String remark, float amount) {
         this.id = id;
+        this.accountId = accountId;
+        this.date = date;
         this.title = title;
+        this.remark = remark;
+        this.amount = amount;
     }
 
     public Date getDate() {
@@ -51,5 +55,21 @@ public class Check {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
     }
 }

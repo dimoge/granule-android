@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="修改账户" android:gravity="center" android:textSize="40dp"/>
+
+    <!-- 账户名称-->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="账户名称:" android:layout_weight="3" android:gravity="right|center_vertical"/>
+        <EditText android:id="@+id/account_name_update_edtTxt" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!-- 总额-->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="账户总额:" android:layout_weight="3" android:gravity="right|center_vertical"/>
+        <EditText android:id="@+id/account_total_update_edtTxt" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:inputType="number"/>
+    </LinearLayout>
+
+    <!-- 确定/取消按钮-->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:orientation="horizontal">
+        <Button android:id="@+id/account_update_no_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="放弃"/>
+        <Button android:id="@+id/account_update_yes_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="修改"/>
+    </LinearLayout>
+
+</LinearLayout>
