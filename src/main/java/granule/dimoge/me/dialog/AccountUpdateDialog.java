@@ -101,13 +101,14 @@ public class AccountUpdateDialog extends Dialog implements View.OnClickListener 
                         accountActivity.accountListAdapter.accountList.remove(position);
                         accountActivity.accountListAdapter.accountList.add(position, account);
                         accountActivity.accountListAdapter.notifyDataSetChanged();//通知适配器
+                        Toast.makeText(context, "修改成功!!!!", Toast.LENGTH_SHORT).show();
+                        dismiss();
                     }
                 }
 
-
                 break;
             case R.id.account_update_no_btn://放弃修改
-                //TODO
+                dismiss();
                 break;
             default:return;
         }
