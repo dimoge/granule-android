@@ -7,12 +7,38 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 /**
  * Created by dime on 2015/8/10 0010.
  */
 public class CommonUtil {
+
+
+    /**
+     * 将date类型的数据转化为str类型,  格式为 yyyy-MM-dd HH:mm:ss
+     * @param date
+     * @return String
+     */
+    public static String Date2Str(Date date){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(date);
+    }
+
+    /**
+     * 将字符串转化为date类型, 格式为YYYY-DD-MM HH:MM:SS
+     * @param string
+     * @return Date
+     * @throws ParseException
+     */
+    public static Date Str2Date(String string) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.parse(string);
+    }
+
 
     /**
      * 获取设备的唯一标识码

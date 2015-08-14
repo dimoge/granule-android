@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -89,11 +90,20 @@ public class AccountActivity extends Activity implements View.OnClickListener {
         account_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, CheckActivity.class);
                 intent.putExtra("position", position);
                 context.startActivity(intent);
             }
         });
+    }
+
+        @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //返回键监听, 直接回到桌面
+        Intent home = new Intent(Intent.ACTION_MAIN);
+        home.addCategory(Intent.CATEGORY_HOME);
+        startActivity(home);
+        return super.onKeyDown(keyCode, event);
     }
 
 
