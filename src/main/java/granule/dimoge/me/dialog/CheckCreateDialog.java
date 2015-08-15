@@ -10,7 +10,10 @@ import android.view.WindowManager;
 import android.widget.*;
 import granule.dimoge.me.AppConfig;
 import granule.dimoge.me.R;
+import granule.dimoge.me.activity.CheckActivity;
+import granule.dimoge.me.adapter.CheckLlistAdapter;
 import granule.dimoge.me.biz.CheckBiz;
+import granule.dimoge.me.entity.Check;
 import granule.dimoge.me.utils.CommonUtil;
 
 import java.util.Date;
@@ -23,6 +26,7 @@ public class CheckCreateDialog extends Dialog implements View.OnClickListener {
     Context context;
     Window window;
     int accountId;
+    CheckActivity checkActivity = new CheckActivity();
 
     EditText check_title_edtTxt, check_remark_edtTxt, check_amount_edtTxt;//标题, 备注, 金额
     RadioGroup check_icon_rdoGroup;
@@ -87,14 +91,26 @@ public class CheckCreateDialog extends Dialog implements View.OnClickListener {
                     //构造参数
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("accountId", accountId);
-                    contentValues.put("date", CommonUtil.Date2Str(new Date()));
+                    Date date = new Date();
+                    contentValues.put("date", CommonUtil.Date2Str(date));
                     contentValues.put("title", title);
                     contentValues.put("remark", remark);
                     contentValues.put("amount", amount);
                     contentValues.put("userId", AppConfig.user.getId());
+                    //构造一个对象
+                    Check check = new Check();
+                    check.setId(checkActivity.checkLlistAdapter.checkList.size());
+                    check.setTitle(title);
+                    check.setRemark(remark);
+                    check.setDate(date);
+                    check.setAmount(amount);
+                    //执行数据库添加操作
                     CheckBiz checkBiz = new CheckBiz(context);
                     if(checkBiz.add(contentValues)!=-1){
                         Toast.makeText(context, "添加账单成功:"+ title, Toast.LENGTH_SHORT).show();
+                        //刷新适配器
+                        checkActivity.checkLlistAdapter.checkList.add(check);
+                        checkActivity.checkLlistAdapter.notifyDataSetChanged();//通知适配器数据已经修改
                         dismiss();
                     }else {
                         Toast.makeText(context, "添加账单失败", Toast.LENGTH_SHORT).show();

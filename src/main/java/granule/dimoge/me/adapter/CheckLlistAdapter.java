@@ -19,7 +19,7 @@ import java.util.List;
 public class CheckLlistAdapter extends BaseAdapter {
 
     Context context;
-    List<Check> checkList;//数据
+    public static List<Check> checkList;//数据
 
     ImageView check_item_img;
     TextView check_item_title_tv;

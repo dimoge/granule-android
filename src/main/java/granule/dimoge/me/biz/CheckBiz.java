@@ -38,7 +38,7 @@ public class CheckBiz {
         List<Check> checkList = new ArrayList<Check>();
         MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
         SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from check where accountId="+accountId, null);
+        Cursor cursor = db.rawQuery("select * from checks where accountId=?", new String[]{accountId+""});
         while (cursor.moveToNext()){
             Check check = new Check();
             check.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));

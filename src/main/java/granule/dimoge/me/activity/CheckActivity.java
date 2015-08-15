@@ -2,12 +2,11 @@ package granule.dimoge.me.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 import granule.dimoge.me.R;
 import granule.dimoge.me.adapter.CheckLlistAdapter;
 import granule.dimoge.me.biz.CheckBiz;
@@ -15,8 +14,6 @@ import granule.dimoge.me.dialog.CheckCreateDialog;
 import granule.dimoge.me.entity.Check;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +22,7 @@ import java.util.List;
 public class CheckActivity extends Activity implements View.OnClickListener {
 
     int accountId;
+    public static CheckLlistAdapter checkLlistAdapter;
 
     Context context;
     ImageButton check_create_imgBtn;//创建账单
@@ -37,6 +35,7 @@ public class CheckActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_check);
         context = this;
         accountId = Integer.parseInt( getIntent().getStringExtra("accountId") );
+        Toast.makeText(context, "accountId="+accountId, Toast.LENGTH_SHORT).show();
         try {
             initView();
         } catch (ParseException e) {
@@ -62,17 +61,11 @@ public class CheckActivity extends Activity implements View.OnClickListener {
         check_lv = (ListView) findViewById(R.id.check_lv);
 
 
+         CheckBiz checkBiz = new CheckBiz(context);
+        List<Check> checkList = checkBiz.getAll(accountId);
+        Toast.makeText(context, "找到多少个账单数据===?==="+checkList.size(), Toast.LENGTH_SHORT).show();
         /////模拟假数据, 加入到适配器中
-        List<Check> checkList = new ArrayList<Check>();
-        for(int i = 0 ; i<10 ; i++ ){
-            Check check = new Check();
-            check.setDate(new Date());
-            check.setId(i);
-            check.setRemark("这个月很穷, 你看着办--" + i);
-            check.setTitle("这里是标题--"+i);
-            checkList.add(check);
-        }
-        CheckLlistAdapter checkLlistAdapter = new CheckLlistAdapter(context, checkList);
+        checkLlistAdapter = new CheckLlistAdapter(context, checkList);
         check_lv.setAdapter(checkLlistAdapter);
     }
 
