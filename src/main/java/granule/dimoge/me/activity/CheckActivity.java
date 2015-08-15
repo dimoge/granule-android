@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import granule.dimoge.me.R;
@@ -22,17 +23,19 @@ import java.util.List;
  */
 public class CheckActivity extends Activity implements View.OnClickListener {
 
+    int accountId;
+
     Context context;
-    TextView create_check_tv;//创建账单
+    ImageButton check_create_imgBtn;//创建账单
     ListView check_lv;//账单列表
     CheckBiz checkBiz;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_check);
         context = this;
+        accountId = Integer.parseInt( getIntent().getStringExtra("accountId") );
         try {
             initView();
         } catch (ParseException e) {
@@ -44,7 +47,7 @@ public class CheckActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.create_check_tv:
+            case R.id.check_create_imgBtn:
                 //TODO:创建一个新的账单
                 break;
             default:return;
@@ -52,13 +55,9 @@ public class CheckActivity extends Activity implements View.OnClickListener {
     }
 
     private void initView() throws ParseException {
-        create_check_tv = (TextView) findViewById(R.id.create_check_tv);
+        check_create_imgBtn = (ImageButton) findViewById(R.id.check_create_imgBtn);
         check_lv = (ListView) findViewById(R.id.check_lv);
 
-        create_check_tv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //textView添加下划线
-
-//        checkBiz = new CheckBiz(context);
-//        List<Check> checks = checkBiz.getAll(Integer.parseInt(getIntent().getStringExtra("accountId")));
 
         /////模拟假数据, 加入到适配器中
         List<Check> checkList = new ArrayList<Check>();
@@ -75,7 +74,7 @@ public class CheckActivity extends Activity implements View.OnClickListener {
     }
 
     private void initClick() {
-        create_check_tv.setOnClickListener(this);
+        check_create_imgBtn.setOnClickListener(this);
     }
 
 

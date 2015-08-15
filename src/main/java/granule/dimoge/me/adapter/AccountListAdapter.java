@@ -72,7 +72,7 @@ public class AccountListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CheckActivity.class);
-                intent.putExtra("accountId", accountList.get(position).getId());
+                intent.putExtra("accountId", accountList.get(position).getId()+"");
                 context.startActivity(intent);
             }
         });
