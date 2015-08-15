@@ -9,8 +9,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import granule.dimoge.me.R;
 import granule.dimoge.me.adapter.CheckLlistAdapter;
+import granule.dimoge.me.biz.CheckBiz;
 import granule.dimoge.me.entity.Check;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,7 @@ public class CheckActivity extends Activity implements View.OnClickListener {
     Context context;
     TextView create_check_tv;//创建账单
     ListView check_lv;//账单列表
+    CheckBiz checkBiz;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,11 @@ public class CheckActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         context = this;
-        initView();
+        try {
+            initView();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         initClick();
     }
 
@@ -44,11 +51,14 @@ public class CheckActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void initView() {
+    private void initView() throws ParseException {
         create_check_tv = (TextView) findViewById(R.id.create_check_tv);
         check_lv = (ListView) findViewById(R.id.check_lv);
 
         create_check_tv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //textView添加下划线
+
+        checkBiz = new CheckBiz(context);
+        List<Check> checks = checkBiz.getAll(Integer.parseInt(getIntent().getStringExtra("accountId")));
 
         /////模拟假数据, 加入到适配器中
         List<Check> checkList = new ArrayList<Check>();
