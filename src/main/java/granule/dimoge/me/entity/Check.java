@@ -8,6 +8,7 @@ import java.util.Date;
 public class Check {
     private int id;
     private int accountId;//所属账户id
+    private String userId;//所属用户id
     private Date date;//日期
     private String title;//标题
     private String remark;//备注
@@ -16,9 +17,10 @@ public class Check {
     public Check(){
     }
 
-    public Check(int id, int accountId, Date date, String title, String remark, float amount) {
+    public Check(int id, int accountId, String userId, Date date, String title, String remark, float amount) {
         this.id = id;
         this.accountId = accountId;
+        this.userId = userId;
         this.date = date;
         this.title = title;
         this.remark = remark;
@@ -71,5 +73,13 @@ public class Check {
 
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

@@ -50,7 +50,7 @@ public class CheckActivity extends Activity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.check_create_imgBtn:
                 //TODO:创建一个新的账单
-                CheckCreateDialog checkCreateDialog = new CheckCreateDialog(context, R.style.account_create_style);
+                CheckCreateDialog checkCreateDialog = new CheckCreateDialog(context, R.style.account_create_style, accountId);
                 checkCreateDialog.showDialog();
                 break;
             default:return;

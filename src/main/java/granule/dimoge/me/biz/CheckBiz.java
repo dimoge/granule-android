@@ -18,15 +18,15 @@ import java.util.ArrayList;
 public class CheckBiz {
 
     Context context;
-    MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
 
     public CheckBiz(Context context) {
         this.context = context;
     }
 
     public long add(ContentValues contentValues){
+        MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
         SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
-        return db.insert("check", null, contentValues);
+        return db.insert("checks", null, contentValues);
     }
 
     /**
