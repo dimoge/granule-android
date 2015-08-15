@@ -87,7 +87,7 @@ public class CheckCreateDialog extends Dialog implements View.OnClickListener {
                     float amount;
                     title = check_title_edtTxt.getText().toString().trim();
                     remark = check_remark_edtTxt.getText().toString().trim();
-                    amount = check_icon_rdoGroup.getCheckedRadioButtonId()==check_out_radioBtn.getId()?Float.parseFloat(check_amount_edtTxt.getText().toString().trim()):-Float.parseFloat(check_amount_edtTxt.getText().toString().trim());
+                    amount = check_icon_rdoGroup.getCheckedRadioButtonId()==check_out_radioBtn.getId()?-Float.parseFloat(check_amount_edtTxt.getText().toString().trim()):Float.parseFloat(check_amount_edtTxt.getText().toString().trim());
                     //构造参数
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("accountId", accountId);
