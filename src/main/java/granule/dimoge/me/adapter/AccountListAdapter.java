@@ -50,16 +50,14 @@ public class AccountListAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_account, null);//加载布局文件
-            //控件初始化
-            account_icon_img = (ImageView) convertView.findViewById(R.id.account_icon_img);
-            account_name_tv = (TextView) convertView.findViewById(R.id.account_name_tv);
-            account_total_tv = (TextView) convertView.findViewById(R.id.account_total_tv);
-            account_update_imgBtn = (ImageButton) convertView.findViewById(R.id.account_update_imgBtn);
-        }
+        convertView = LayoutInflater.from(context).inflate(R.layout.adapter_account, null);//加载布局文件
+        //控件初始化
+        account_icon_img = (ImageView) convertView.findViewById(R.id.account_icon_img);
+        account_name_tv = (TextView) convertView.findViewById(R.id.account_name_tv);
+        account_total_tv = (TextView) convertView.findViewById(R.id.account_total_tv);
+        account_update_imgBtn = (ImageButton) convertView.findViewById(R.id.account_update_imgBtn);
         account_name_tv.setText(accountList.get(position).getName());//显示账户名称
-        account_total_tv.setText("总金额:"+accountList.get(position).getTotal());//显示总金额
+        account_total_tv.setText("总金额:" + accountList.get(position).getTotal());//显示总金额
         account_icon_img.setImageResource(accountList.get(position).getImg().equals("cash") ? R.mipmap.cash : R.mipmap.incash);
         account_update_imgBtn.setOnClickListener(new View.OnClickListener() {//点击修改账户信息
             @Override
