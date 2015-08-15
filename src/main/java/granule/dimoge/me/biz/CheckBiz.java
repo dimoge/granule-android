@@ -1,5 +1,6 @@
 package granule.dimoge.me.biz;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,9 +18,15 @@ import java.util.ArrayList;
 public class CheckBiz {
 
     Context context;
+    MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
 
-        public CheckBiz(Context context) {
+    public CheckBiz(Context context) {
         this.context = context;
+    }
+
+    public long add(ContentValues contentValues){
+        SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
+        return db.insert("check", null, contentValues);
     }
 
     /**
