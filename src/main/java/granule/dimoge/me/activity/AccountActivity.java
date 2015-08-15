@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Created by dime on 2015/8/8 0008.
  */
-public class AccountActivity extends Activity implements View.OnClickListener {
+public class AccountActivity extends Activity{
     Context context;
     public static AccountListAdapter accountListAdapter;
 
@@ -42,17 +42,6 @@ public class AccountActivity extends Activity implements View.OnClickListener {
             e.printStackTrace();
         }
         initClick();
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case 1:
-                //TODO:添加新账户
-                new AccountCreateDialog(context, R.style.account_create_style).showDialog();
-                break;
-            default:return;
-        }
     }
 
     /**
@@ -80,21 +69,13 @@ public class AccountActivity extends Activity implements View.OnClickListener {
         //初始化适配器
         accountListAdapter = new AccountListAdapter(context, accountList);
         account_lv.setAdapter(accountListAdapter);
-
     }
 
     /**
      * 点击事件初始化
      */
     private void initClick() {
-        account_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context, CheckActivity.class);
-                intent.putExtra("position", position);
-                context.startActivity(intent);
-            }
-        });
+
     }
 
         @Override

@@ -1,14 +1,13 @@
 package granule.dimoge.me.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 import granule.dimoge.me.R;
+import granule.dimoge.me.activity.CheckActivity;
 import granule.dimoge.me.dialog.AccountUpdateDialog;
 import granule.dimoge.me.entity.Account;
 import org.w3c.dom.Text;
@@ -24,6 +23,7 @@ public class AccountListAdapter extends BaseAdapter {
     Context context;
     public List<Account> accountList;
 
+    LinearLayout account_item_layout;//整个item布局
     ImageView account_icon_img;//账户图标
     TextView account_name_tv, account_total_tv;//账户名称, 账户总额
     ImageButton account_update_imgBtn;//账户信息修改
@@ -52,6 +52,7 @@ public class AccountListAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(R.layout.adapter_account, null);//加载布局文件
         //控件初始化
+        account_item_layout = (LinearLayout) convertView.findViewById(R.id.account_item_layout);
         account_icon_img = (ImageView) convertView.findViewById(R.id.account_icon_img);
         account_name_tv = (TextView) convertView.findViewById(R.id.account_name_tv);
         account_total_tv = (TextView) convertView.findViewById(R.id.account_total_tv);
@@ -65,6 +66,14 @@ public class AccountListAdapter extends BaseAdapter {
                 //打开修改账户信息的对话框
                 AccountUpdateDialog accountUpdateDialog = new AccountUpdateDialog(context, R.style.account_create_style, accountList.get(position), position);
                 accountUpdateDialog.showDialog();
+            }
+        });
+        account_item_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CheckActivity.class);
+                intent.putExtra("accountId", accountList.get(position).getId());
+                context.startActivity(intent);
             }
         });
 

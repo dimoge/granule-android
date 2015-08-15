@@ -57,8 +57,8 @@ public class CheckActivity extends Activity implements View.OnClickListener {
 
         create_check_tv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //textView添加下划线
 
-        checkBiz = new CheckBiz(context);
-        List<Check> checks = checkBiz.getAll(Integer.parseInt(getIntent().getStringExtra("accountId")));
+//        checkBiz = new CheckBiz(context);
+//        List<Check> checks = checkBiz.getAll(Integer.parseInt(getIntent().getStringExtra("accountId")));
 
         /////模拟假数据, 加入到适配器中
         List<Check> checkList = new ArrayList<Check>();
