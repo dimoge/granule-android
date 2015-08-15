@@ -11,6 +11,7 @@ import android.widget.TextView;
 import granule.dimoge.me.R;
 import granule.dimoge.me.adapter.CheckLlistAdapter;
 import granule.dimoge.me.biz.CheckBiz;
+import granule.dimoge.me.dialog.CheckCreateDialog;
 import granule.dimoge.me.entity.Check;
 
 import java.text.ParseException;
@@ -49,6 +50,8 @@ public class CheckActivity extends Activity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.check_create_imgBtn:
                 //TODO:创建一个新的账单
+                CheckCreateDialog checkCreateDialog = new CheckCreateDialog(context, R.style.account_create_style);
+                checkCreateDialog.showDialog();
                 break;
             default:return;
         }
