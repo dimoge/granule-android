@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -35,7 +36,6 @@ public class CheckActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_check);
         context = this;
         accountId = Integer.parseInt( getIntent().getStringExtra("accountId") );
-        Toast.makeText(context, "accountId="+accountId, Toast.LENGTH_SHORT).show();
         try {
             initView();
         } catch (ParseException e) {
@@ -63,10 +63,16 @@ public class CheckActivity extends Activity implements View.OnClickListener {
 
          CheckBiz checkBiz = new CheckBiz(context);
         List<Check> checkList = checkBiz.getAll(accountId);
-        Toast.makeText(context, "找到多少个账单数据===?==="+checkList.size(), Toast.LENGTH_SHORT).show();
         /////模拟假数据, 加入到适配器中
         checkLlistAdapter = new CheckLlistAdapter(context, checkList);
         check_lv.setAdapter(checkLlistAdapter);
+        check_lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(context, "我被长按喽!!!!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
     }
 
     private void initClick() {
