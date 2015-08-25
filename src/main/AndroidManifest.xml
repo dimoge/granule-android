@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="granule.dimoge.me" >
 
+    <uses-sdk
+        android:minSdkVersion="16"/>
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application

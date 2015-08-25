@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import granule.dimoge.me.R;
 import granule.dimoge.me.adapter.AccountListAdapter;
 import granule.dimoge.me.biz.AccountBiz;
@@ -28,7 +29,7 @@ public class AccountActivity extends Activity{
     public static AccountListAdapter accountListAdapter;
 
     ImageView account_add_img;//添加账户的按钮
-    ListView account_lv;//账户列表
+    SwipeMenuListView account_lv;//账户列表
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class AccountActivity extends Activity{
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void initView() throws ParseException {
-        account_lv = (ListView) findViewById(R.id.account_lv);
+        account_lv = (SwipeMenuListView) findViewById(R.id.account_lv);
         //获取数据
         AccountBiz accountBiz = new AccountBiz(context);
         List<Account> accountList = accountBiz.getAll();
