@@ -3,6 +3,8 @@ package granule.dimoge.me.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -29,6 +31,7 @@ public class CheckActivity extends Activity implements View.OnClickListener {
     ImageButton check_create_imgBtn;//创建账单
     ListView check_lv;//账单列表
     CheckBiz checkBiz;
+    List<Check> checkList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,18 +64,42 @@ public class CheckActivity extends Activity implements View.OnClickListener {
         check_lv = (ListView) findViewById(R.id.check_lv);
 
 
-         CheckBiz checkBiz = new CheckBiz(context);
-        List<Check> checkList = checkBiz.getAll(accountId);
+        CheckBiz checkBiz = new CheckBiz(context);
+        checkList = checkBiz.getAll(accountId);
         /////模拟假数据, 加入到适配器中
         checkLlistAdapter = new CheckLlistAdapter(context, checkList);
         check_lv.setAdapter(checkLlistAdapter);
-        check_lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        check_lv.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(context, "我被长按喽!!!!", Toast.LENGTH_SHORT).show();
-                return false;
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                menu.setHeaderTitle("请选择");
+                menu.add(0, 0, 0, "删除");
             }
         });
+//        tmd, 根本不需要长按事件, 这sb
+//        check_lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                return false;
+//            }
+//        });
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if(item.getMenuInfo() instanceof AdapterView.AdapterContextMenuInfo) {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+            Toast.makeText(context, "========="+checkList.get(info.position), Toast.LENGTH_SHORT).show();
+            checkBiz = new CheckBiz(context);
+            if(checkBiz.del(checkList.get(info.position).getId())!=0){//删除成功
+                CheckLlistAdapter.checkList.remove(checkList.get(info.position));
+                checkLlistAdapter.notifyDataSetChanged();
+            }else{
+                Toast.makeText(context, "删除失败, 请返回重试!!!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        return false;
     }
 
     private void initClick() {

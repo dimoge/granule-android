@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import granule.dimoge.me.entity.Check;
 import granule.dimoge.me.utils.CommonUtil;
 import java.util.List;
@@ -38,7 +39,7 @@ public class CheckBiz {
         List<Check> checkList = new ArrayList<Check>();
         MySQLiteHelper mySQLiteHelper = new MySQLiteHelper(context);
         SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from checks where accountId=?", new String[]{accountId+""});
+        Cursor cursor = db.rawQuery("select * from checks where accountId=?", new String[]{accountId + ""});
         while (cursor.moveToNext()){
             Check check = new Check();
             check.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
@@ -50,6 +51,19 @@ public class CheckBiz {
             checkList.add(check);
         }
         return checkList;
+    }
+
+    /**
+     * 账单删除
+     * @param checkId id
+     * @return
+     */
+    public int del(int checkId){
+        int result = 0;
+        MySQLiteHelper  mySQLiteHelper = new MySQLiteHelper(context);
+        SQLiteDatabase db = mySQLiteHelper.getReadableDatabase();
+        result = db.delete("checks", "id=?", new String[]{checkId+""});
+        return result;
     }
 
 }
