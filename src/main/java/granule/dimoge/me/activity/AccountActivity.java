@@ -4,13 +4,17 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import granule.dimoge.me.R;
 import granule.dimoge.me.adapter.AccountListAdapter;
@@ -43,6 +47,36 @@ public class AccountActivity extends Activity{
             e.printStackTrace();
         }
         initClick();
+
+        //自定义侧滑
+        SwipeMenuCreator swipeMenuCreator = new SwipeMenuCreator() {
+            @Override
+            public void create(SwipeMenu swipeMenu) {
+                SwipeMenuItem del = new SwipeMenuItem(context);//删除
+                del.setTitle("删除");
+                del.setBackground(new ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25)));
+                del.setWidth(200);
+                swipeMenu.addMenuItem(del);
+            }
+        };
+        account_lv.setMenuCreator(swipeMenuCreator);
+
+        account_lv.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+        account_lv.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+                        // open
+                        break;
+                    case 1:
+                        // delete
+                        break;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
     }
 
     /**
