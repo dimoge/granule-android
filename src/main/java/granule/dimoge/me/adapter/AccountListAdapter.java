@@ -68,14 +68,14 @@ public class AccountListAdapter extends BaseAdapter {
                 accountUpdateDialog.showDialog();
             }
         });
-        account_item_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, CheckActivity.class);
-                intent.putExtra("accountId", accountList.get(position).getId()+"");
-                context.startActivity(intent);
-            }
-        });
+//        account_item_layout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, CheckActivity.class);
+//                intent.putExtra("accountId", accountList.get(position).getId()+"");
+//                context.startActivity(intent);
+//            }
+//        });
 
         return convertView;
     }

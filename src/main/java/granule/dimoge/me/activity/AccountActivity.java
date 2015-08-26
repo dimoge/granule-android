@@ -48,20 +48,41 @@ public class AccountActivity extends Activity{
         }
         initClick();
 
+
+    }
+
+    /**
+     * 控件初始化
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void initView() throws ParseException {
+        account_lv = (SwipeMenuListView) findViewById(R.id.account_lv);
+
+        ////////////////////////////////////////////////////////////////////////////////////
         //自定义侧滑
         SwipeMenuCreator swipeMenuCreator = new SwipeMenuCreator() {
             @Override
-            public void create(SwipeMenu swipeMenu) {
-                SwipeMenuItem del = new SwipeMenuItem(context);//删除
-                del.setTitle("删除");
-                del.setBackground(new ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25)));
-                del.setWidth(200);
-                swipeMenu.addMenuItem(del);
+            public void create(SwipeMenu menu) {
+                // create "open" item
+                SwipeMenuItem openItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                        0x3F, 0x25)));
+                // set item width
+                deleteItem.setWidth(125);
+                // set a icon
+                deleteItem.setIcon(R.mipmap.icon);
+                // add to menu
+                menu.addMenuItem(deleteItem);
             }
         };
         account_lv.setMenuCreator(swipeMenuCreator);
 
-        account_lv.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+        account_lv.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
         account_lv.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
@@ -77,14 +98,9 @@ public class AccountActivity extends Activity{
                 return false;
             }
         });
-    }
 
-    /**
-     * 控件初始化
-     */
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void initView() throws ParseException {
-        account_lv = (SwipeMenuListView) findViewById(R.id.account_lv);
+        ///////////////////////////////////////////////////////////////////////////////////
+
         //获取数据
         AccountBiz accountBiz = new AccountBiz(context);
         List<Account> accountList = accountBiz.getAll();
